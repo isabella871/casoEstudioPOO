@@ -1,16 +1,10 @@
 package com.example.cursos.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -23,9 +17,14 @@ public class Curso {
     @Column(nullable = false)
     private String titulo;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String descripcion;
 
-    @ManyToMany(mappedBy = "cursos")
-    private List<Estudiante> estudiante = new ArrayList<>();
+    // RELACIÓN CORRECTA: Curso es el DUEÑO de la tabla intermedia
+    @ManyToMany
+    @JoinTable(
+        name = "curso_estudiante",
+        joinColumns = @JoinColumn(name = "id_curso"),
+        inverseJoinColumns = @JoinColumn(name = "id_estudiante"))
+    private Set<Estudiante> estudiantes = new HashSet<>(); // ← plural + Set
 }
