@@ -6,9 +6,11 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.example.cursos.dto.CursoRequestDTO;
-import com.example.cursos.dto.CursoResponseDTO;
+import com.example.cursos.dto.request.CursoRequestDTO;
+import com.example.cursos.dto.response.CursoResponseDTO;
+import com.example.cursos.entity.Categoria;
 import com.example.cursos.entity.Curso;
+import com.example.cursos.repository.CategoriaRepository;
 import com.example.cursos.repository.CursoRepository;
 
 import jakarta.transaction.Transactional;
@@ -20,20 +22,25 @@ import lombok.RequiredArgsConstructor;
 //  si algo falla => hace rollback | si todo esta bien => se confirma la operación
 public class CursoService {
     private final CursoRepository cursoRepository;
+    private final CategoriaRepository categoriaRepository;
 
     // crear curso
     @Transactional
     public CursoResponseDTO crearCurso(CursoRequestDTO cursoRequestDTO){
-        CursoResponseDTO response = new CursoResponseDTO();
-        Curso curso = new Curso();
+        Categoria categoria = categoriaRepository.findById(cursoRequestDTO.getIdCategoria())
+            .orElseThrow(() -> new RuntimeException("Categoria no encontrada"));
 
+        Curso curso = new Curso();
         curso.setTitulo(cursoRequestDTO.getTitulo());
         curso.setDescripcion(cursoRequestDTO.getDescripcion());
+        curso.setCategoria(categoria);
         
         cursoRepository.save(curso);
 
+        CursoResponseDTO response = new CursoResponseDTO();
         response.setTitulo(curso.getTitulo());
         response.setDescripcion(curso.getDescripcion());
+        response.setCategoria(categoria.getNombre());
 
         return response;
     }

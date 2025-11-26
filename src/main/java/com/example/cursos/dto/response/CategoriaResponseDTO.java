@@ -1,4 +1,4 @@
-package com.example.cursos.dto;
+package com.example.cursos.dto.response;
 
 import lombok.Data;
 

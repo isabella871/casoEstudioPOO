@@ -1,4 +1,4 @@
-package com.example.cursos.dto;
+package com.example.cursos.dto.response;
 
 import lombok.Data;
 
@@ -9,4 +9,5 @@ public class CursoResponseDTO {
     private Long id;
     private String titulo;
     private String descripcion;
+    private String categoria;
 }

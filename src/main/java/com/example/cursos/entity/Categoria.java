@@ -1,11 +1,8 @@
 package com.example.cursos.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import java.util.List;
+
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -18,4 +15,8 @@ public class Categoria {
 
     @Column(nullable = false)
     private String nombre;
+
+    // relación con curso
+    @OneToMany(mappedBy = "categoria")
+    private List<Curso> cursos;
 }

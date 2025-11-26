@@ -20,6 +20,12 @@ public class Curso {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String descripcion;
 
+    // relacion categoria - curso
+    @ManyToOne
+    @JoinColumn(name = "id_categoria", nullable = false)
+    private Categoria categoria;
+
+    // Tabla intermedia: curso_estudiante
     // RELACIÓN CORRECTA: Curso es el DUEÑO de la tabla intermedia
     @ManyToMany
     @JoinTable(

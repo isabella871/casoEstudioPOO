@@ -1,7 +1,7 @@
 package com.example.cursos.controller;
 
-import com.example.cursos.dto.CategoriaRequestDTO;
-import com.example.cursos.dto.CategoriaResponseDTO;
+import com.example.cursos.dto.request.CategoriaRequestDTO;
+import com.example.cursos.dto.response.CategoriaResponseDTO;
 import com.example.cursos.service.CategoriaService;
 
 import lombok.RequiredArgsConstructor;

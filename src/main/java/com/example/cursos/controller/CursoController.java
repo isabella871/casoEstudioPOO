@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.cursos.dto.CursoRequestDTO;
-import com.example.cursos.dto.CursoResponseDTO;
+import com.example.cursos.dto.request.CursoRequestDTO;
+import com.example.cursos.dto.response.CursoResponseDTO;
 import com.example.cursos.service.CursoService;
 
 import lombok.RequiredArgsConstructor;

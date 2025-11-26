@@ -1,7 +1,7 @@
 package com.example.cursos.service;
 
-import com.example.cursos.dto.CategoriaRequestDTO;
-import com.example.cursos.dto.CategoriaResponseDTO;
+import com.example.cursos.dto.request.CategoriaRequestDTO;
+import com.example.cursos.dto.response.CategoriaResponseDTO;
 import com.example.cursos.entity.Categoria;
 import com.example.cursos.repository.CategoriaRepository;
 

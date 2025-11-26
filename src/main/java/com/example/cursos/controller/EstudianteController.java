@@ -1,7 +1,7 @@
 package com.example.cursos.controller;
 
-import com.example.cursos.dto.EstudianteRequestDTO;
-import com.example.cursos.dto.EstudianteResponseDTO;
+import com.example.cursos.dto.request.EstudianteRequestDTO;
+import com.example.cursos.dto.response.EstudianteResponseDTO;
 import com.example.cursos.service.EstudianteService;
 
 import lombok.RequiredArgsConstructor;
